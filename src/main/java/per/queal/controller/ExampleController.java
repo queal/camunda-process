@@ -15,6 +15,7 @@ public class ExampleController {
 
     @RequestMapping("/test")
     public void test() {
+
     }
 
 }

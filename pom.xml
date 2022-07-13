@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>per.queal</groupId>
@@ -16,6 +17,35 @@
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
         <kotlin.version>1.7.10</kotlin.version>
     </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -50,159 +80,29 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>3.0.2</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-httpclient</artifactId>
         </dependency>
-
-        <!-- kotlin start -->
-<!--        <dependency>-->
-<!--            <groupId>org.jetbrains.kotlin</groupId>-->
-<!--            <artifactId>kotlin-reflect</artifactId>-->
-<!--            <version>${kotlin.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.jetbrains.kotlin</groupId>-->
-<!--            <artifactId>kotlin-stdlib-jdk8</artifactId>-->
-<!--            <version>${kotlin.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.fasterxml.jackson.module</groupId>-->
-<!--            <artifactId>jackson-module-kotlin</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.jetbrains.kotlin</groupId>-->
-<!--            <artifactId>kotlin-stdlib</artifactId>-->
-<!--        </dependency>-->
-        <!-- kotlin end -->
-
     </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${spring-cloud-alibaba.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-<!--            <dependency>-->
-<!--                <groupId>org.camunda.bpm</groupId>-->
-<!--                <artifactId>camunda-bom</artifactId>-->
-<!--                <version>${camunda.version}</version>-->
-<!--                <scope>import</scope>-->
-<!--                <type>pom</type>-->
-<!--            </dependency>-->
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <plugins>
-<!--            <plugin>-->
-<!--                <groupId>org.jetbrains.kotlin</groupId>-->
-<!--                <artifactId>kotlin-maven-plugin</artifactId>-->
-<!--                <version>${kotlin.version}</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>compile</id>-->
-<!--                        <phase>compile</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>compile</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <sourceDirs>${project.basedir}/src/main/java</sourceDirs>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <jvmTarget>${java.version}</jvmTarget>-->
-<!--                    <compilerPlugins>-->
-<!--                        <plugin>spring</plugin>-->
-<!--                        <plugin>no-arg</plugin>-->
-<!--                        <plugin>all-open</plugin>-->
-<!--                    </compilerPlugins>-->
-<!--                    <pluginOptions>-->
-<!--                        &lt;!&ndash; Each annotation is placed on its own line &ndash;&gt;-->
-<!--                        <option>no-arg:annotation=org.camunda.community.rest.EnableCamundaRestClient</option>-->
-<!--                    </pluginOptions>-->
-<!--                </configuration>-->
-
-<!--                <dependencies>-->
-<!--                    <dependency>-->
-<!--                        <groupId>org.jetbrains.kotlin</groupId>-->
-<!--                        <artifactId>kotlin-maven-allopen</artifactId>-->
-<!--                        <version>${kotlin.version}</version>-->
-<!--                    </dependency>-->
-<!--                    <dependency>-->
-<!--                        <groupId>org.jetbrains.kotlin</groupId>-->
-<!--                        <artifactId>kotlin-maven-noarg</artifactId>-->
-<!--                        <version>${kotlin.version}</version>-->
-<!--                    </dependency>-->
-<!--                </dependencies>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--            <groupId>org.jetbrains.kotlin</groupId>-->
-<!--            <artifactId>kotlin-maven-plugin</artifactId>-->
-<!--                <version>${kotlin.version}</version>-->
-<!--                <configuration>-->
-<!--                    <jvmTarget>${java.version}</jvmTarget>-->
-<!--                    <compilerPlugins>-->
-<!--                        <plugin>spring</plugin>-->
-<!--                        <plugin>no-arg</plugin>-->
-<!--                        <plugin>all-open</plugin>-->
-<!--                    </compilerPlugins>-->
-<!--                    <pluginOptions>-->
-<!--                        &lt;!&ndash; Each annotation is placed on its own line &ndash;&gt;-->
-<!--                        <option>no-arg:annotation=org.camunda.community.rest.EnableCamundaRestClient</option>-->
-<!--                    </pluginOptions>-->
-<!--                </configuration>-->
-
-<!--                <dependencies>-->
-<!--                    <dependency>-->
-<!--                        <groupId>org.jetbrains.kotlin</groupId>-->
-<!--                        <artifactId>kotlin-maven-allopen</artifactId>-->
-<!--                        <version>${kotlin.version}</version>-->
-<!--                    </dependency>-->
-<!--                    <dependency>-->
-<!--                        <groupId>org.jetbrains.kotlin</groupId>-->
-<!--                        <artifactId>kotlin-maven-noarg</artifactId>-->
-<!--                        <version>${kotlin.version}</version>-->
-<!--                    </dependency>-->
-<!--                </dependencies>-->
-<!--            </plugin>-->
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <executions>
                     <execution>
-                        <id>default-complie</id>
+                        <id>default-compile</id>
                         <phase>none</phase>
                     </execution>
 
                     <execution>
-                        <id>java-complie</id>
+                        <id>java-compile</id>
                         <phase>none</phase>
                     </execution>
                 </executions>
@@ -230,46 +130,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>public</id>
-            <url>https://maven.aliyun.com/repository/public</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>central</id>
-            <name>aliyun maven</name>
-            <url>https://maven.aliyun.com/repository/central</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>spring</id>
-            <url>https://maven.aliyun.com/repository/spring</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-<!--        <repository>-->
-<!--            <id>camunda-bpm-nexus</id>-->
-<!--            <name>camunda-bpm-nexus</name>-->
-<!--            <url>-->
-<!--                https://artifacts.camunda.com/artifactory/public/-->
-<!--            </url>-->
-<!--        </repository>-->
-    </repositories>
-
 </project>
